@@ -5,9 +5,9 @@ Script fet en C++ ([chaser.cpp](./chaser.cpp)) amb un script extra en Python ([i
 
 També s'ha fet un script de Bash ([runChaser.sh](./runChaser.sh)) per a fer l'execució molt més senzilla, al que només se li ha d'introduir la mida dels sets.
 
-El script de C++ executa el problema dues vegades, primer de forma normal i després paralelitzant el recorregut en tants threads com sigui possible.
+El script en C++ executa el problema dues vegades, primer de forma normal i després repartint la feina en tants threads com sigui possible.
 
-El script de bash necessita g++ i python3
+El script de Bash necessita g++ i python3
 
 Arquitectura: Linux AMD64
 
