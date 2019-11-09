@@ -3,7 +3,7 @@
 ## Descripció
 Script fet amb C++ ([chaser.cpp](./chaser.cpp)) amb un script extra amb Python ([input.py](./input.py)) per a transformar la sortida del Generador de sets a una més fàcil de llegir.
 
-També s'ha fet un script de Bash ([runChaser.sh](./runChaser.sh)) per a fer l'execució molt més senzilla, al que només li has d'introduir la mida dels sets.
+També s'ha fet un script de Bash ([runChaser.sh](./runChaser.sh)) per a fer l'execució molt més senzilla, al que només se li ha d'introduir la mida dels sets.
 
 El script de C++ executa el problema dues vegades, primer de forma normal i després paralelitzant el recorregut en tants threads com sigui possible.
 
