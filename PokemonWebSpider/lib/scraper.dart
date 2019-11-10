@@ -16,7 +16,7 @@ Future<Document> getDocument(Client client, String link) async =>
 
 Future<List<Pokemon>> getPokemons() async {
   final Client client = Client();
-  final host = 'https://pokemondb.net/';
+  final host = 'https://pokemondb.net';
   final home = await getDocument(client, host);
   List<String> links = getPokedexLinks(home)..shuffle();
   List<Pokemon> pokemons = [];

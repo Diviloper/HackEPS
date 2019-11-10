@@ -1,0 +1,55 @@
+body {
+    background: url('../images/background.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+}
+
+h1>img {
+    max-width: 40%;
+}
+
+#pokemon-team-div {
+    display: flex;
+    flex-direction: row;
+    padding: 3em 5em;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.card {
+    padding-top: 2%;
+    width: 25vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 15%;
+    transition: transform .2s, opacity .2s;
+    opacity: 0.9;
+}
+
+.card:hover {
+    transform: scale(1.15);
+    opacity: 1;
+    z-index: 1;
+}
+
+.card-image {
+    width: 20vw;
+    height: 20vw;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
