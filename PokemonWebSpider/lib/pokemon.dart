@@ -54,9 +54,9 @@ class Pokemon with EquatableMixin {
         .any((element) => element.innerHtml == 'Pokédex data');
   }
 
-  bool sameLine(Pokemon other) {
-    return evolutionLineLinks.contains(other.pageLink);
-  }
+  bool sameLine(Pokemon other) => evolutionLineLinks.contains(other.pageLink);
+
+  bool sameType(Pokemon other) => types.contains(other.types[0]) || types.contains(other.types[1]);
 
   @override
   String toString() {

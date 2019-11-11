@@ -28,8 +28,9 @@ Future<List<Pokemon>> getPokemons() async {
         try {
           final newPokemon = Pokemon.fromPage(host, link, document);
           if (newPokemon.types.length == 2 &&
-              !pokemons.any((pokemon) => pokemon.sameLine(newPokemon))) {
+              !pokemons.any((pokemon) => pokemon.sameLine(newPokemon)) && !pokemons.any((pokemon) => pokemon.sameType(newPokemon))) {
             pokemons.add(newPokemon);
+            print('${newPokemon.name} scrapped');
             if (pokemons.length == 6) break;
           }
         } on PokException catch (_) {
