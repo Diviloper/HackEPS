@@ -1,8 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:html/dom.dart';
 
-class PokException implements Exception {
-}
+class PokException implements Exception {}
 
 class Pokemon with EquatableMixin {
   int pokedexNumber;
@@ -36,9 +35,9 @@ class Pokemon with EquatableMixin {
       final evoList = document.getElementsByClassName('infocard-list-evo');
       this.evolutionLineLinks = evoList.isEmpty
           ? []
-          : evoList.first
+          : evoList.expand((evoL) => evoL 
               .getElementsByClassName('ent-name')
-              .map((element) => '$host${element.attributes['href']}')
+              .map((element) => '$host${element.attributes['href']}'))
               .toList();
     } catch (_) {
       throw PokException();
@@ -56,10 +55,11 @@ class Pokemon with EquatableMixin {
 
   bool sameLine(Pokemon other) => evolutionLineLinks.contains(other.pageLink);
 
-  bool sameType(Pokemon other) => types.contains(other.types[0]) || types.contains(other.types[1]);
+  bool sameType(Pokemon other) =>
+      types.contains(other.types[0]) || types.contains(other.types[1]);
+
+  bool hasEvolutions() => evolutionLineLinks.isNotEmpty && evolutionLineLinks.last != pageLink;
 
   @override
-  String toString() {
-    return '$name: $pokedexNumber - ${types.toString()}';
-  }
+  String toString() => '$name: $pokedexNumber - ${types.toString()}';
 }

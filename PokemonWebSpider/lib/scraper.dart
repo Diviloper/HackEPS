@@ -19,19 +19,23 @@ Future<List<Pokemon>> getPokemons() async {
   final host = 'https://pokemondb.net';
   final home = await getDocument(client, host);
   List<String> links = getPokedexLinks(home)..shuffle();
-  List<Pokemon> pokemons = [];
-  while (pokemons.length < 6) {
+  List<Pokemon> team = [];
+  while (team.length < 6) {
     List<String> nextLinks = [];
     for (String link in links) {
       final document = await getDocument(client, '$host$link');
       if (Pokemon.isPokemonPage(document)) {
         try {
           final newPokemon = Pokemon.fromPage(host, link, document);
-          if (newPokemon.types.length == 2 &&
-              !pokemons.any((pokemon) => pokemon.sameLine(newPokemon)) && !pokemons.any((pokemon) => pokemon.sameType(newPokemon))) {
-            pokemons.add(newPokemon);
+          if (canBeAdded(team, newPokemon)) {
             print('${newPokemon.name} scrapped');
-            if (pokemons.length == 6) break;
+            if (newPokemon.hasEvolutions()) {
+              print('\tDiscarded because it has evolutions');
+            } else {
+              print('\tAdded to team');
+              team.add(newPokemon);
+              if (team.length == 6) break;
+            }
           }
         } on PokException catch (_) {
           continue;
@@ -41,5 +45,10 @@ Future<List<Pokemon>> getPokemons() async {
     }
     links = nextLinks..shuffle();
   }
-  return pokemons;
+  return team;
 }
+
+bool canBeAdded(List<Pokemon> team, Pokemon newPokemon) =>
+    newPokemon.types.length == 2 &&
+    !team.any((pokemon) => pokemon.sameLine(newPokemon)) &&
+    !team.any((pokemon) => pokemon.sameType(newPokemon));
