@@ -7,4 +7,4 @@ Carpeta [ChaseThePair](./ChaseThePair), conté un Readme amb informació detalla
 ## Repte *Pokémon Web Spider*:
 
 La carpeta [PokemonWebSpider](./PokemonWebSpider) conté els scripts usats per obtenir els pokemons i generar el fitxer HTML. 
-Es pot veure el resultat directamenta la [pàgina del repositori](https://diviloper.github.io/HackEPS/).
+Es pot veure el resultat directament [aquí](https://diviloper.github.io/HackEPS/PokemonWebSpider/lib/web/).
